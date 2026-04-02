@@ -3,7 +3,7 @@ import { BsGlobe, BsNintendoSwitch } from "react-icons/bs";
 import { FaAndroid, FaApple, FaAppStoreIos, FaLinux, FaPlaystation, FaWindows, FaXbox } from 'react-icons/fa6';
 
 import type { IconType } from 'react-icons';
-import type { Platform } from '../hooks/usePlatforms';
+import type { Platform } from "../entities/Platform";
 
 interface Props {
   platforms: Platform[]
