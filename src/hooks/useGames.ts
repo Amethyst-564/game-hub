@@ -1,4 +1,4 @@
-import { keepPreviousData, useInfiniteQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import ms from "ms";
 import APIClient from "../services/api-client";
 import useGameQueryStore from "../store";
@@ -6,6 +6,8 @@ import type { Platform } from "./usePlatforms";
 
 export interface Game {
   id: number;
+  slug: string;
+  description_raw: string;
   name: string;
   background_image: string;
   parent_platforms: { platform: Platform }[];
@@ -21,7 +23,7 @@ const useGames = () => {
   return useInfiniteQuery({
     queryKey: ['games', gameQuery],
     queryFn: ({ pageParam }) =>
-      apiClient.get({
+      apiClient.getAll({
         params: {
           genres: gameQuery.genreId,
           parent_platforms: gameQuery.platformId,
